@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Pronunciation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #inputText {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        #pronunciation {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Letter Pronunciation</h1>
+
+    <label for="inputText">Enter Text:</label>
+    <input type="text" id="inputText" placeholder="Type text here">
+
+    <label for="language">Choose Language:</label>
+    <select id="language">
+        <option value="hindi">Hindi</option>
+        <option value="tamil">Tamil</option>
+        <option value="telugu">Telugu</option>
+    </select>
+
+    <button onclick="pronounce()">Pronounce</button>
+
+    <div id="pronunciation"></div>
+
+    <script>
+        function pronounce() {
+            const inputText = document.getElementById('inputText').value;
+            const selectedLanguage = document.getElementById('language').value;
+            const pronunciationDiv = document.getElementById('pronunciation');
+
+            pronunciationDiv.innerHTML = '';
+
+            for (let i = 0; i < inputText.length; i++) {
+                const letter = inputText[i].toLowerCase();
+                let pronunciation = '';
+
+                switch (selectedLanguage) {
+                    case 'hindi':
+                        pronunciation = getHindiTransliteration(letter);
+                        break;
+
+                    case 'tamil':
+                        pronunciation = getTamilTransliteration(letter);
+                        break;
+
+                    case 'telugu':
+                        pronunciation = getTeluguTransliteration(letter);
+                        break;
+                }
+
+                if (pronunciation) {
+                    const pronunciationElement = document.createElement('span');
+                    pronunciationElement.textContent = pronunciation + ' ';
+                    pronunciationDiv.appendChild(pronunciationElement);
+                }
+            }
+        }
+
+        function getHindiTransliteration(letter) {
+            // Add cases for Hindi transliteration to English
+            switch (letter) {
+                case 'अ':
+                    return 'a';
+                case 'आ':
+                    return 'aa';
+                case 'इ':
+                    return 'i';
+                case 'अ':
+                    return 'a';                                         
+                case 'ई':
+                    return 'ii';
+                case 'उ':
+                    return 'u';
+                case 'ऊ':
+                    return 'uu';
+                case 'ए':
+                    return 'e';
+                case 'ऐ':                                                 
+                    return 'ai';
+                default:
+                    return '';
+            }
+        }
+        function getTamilTransliteration(letter) {
+            // Add cases for Tamil transliteration to English
+            switch (letter) {
+                case 'அ':                                   
+                    return 'a';
+                case 'ஆ':
+                    return "a";
+                case "இ":
+                    return "i";
+                case "ஈ":
+                    return "ii";
+                case "உ":
+                    return "u";
+                case "ஊ":
+                    return "uu";
+                case "எ":
+                    return "e";
+                case "ஏ":
+                    return "ē";
+                case "ஒ":
+                    return "o";
+                case "ஓ":
+                    return "ō";
+                default:
+                    return '';
+            }
+        }
+
+        function getTeluguTransliteration(letter) {
+            // Add cases for Telugu transliteration to English
+            switch (letter) {
+                case 'అ':
+                    return 'a';
+                case 'ఆ':
+                    return 'aa';
+                case 'ఇ':
+                    return 'i';
+                case 'ఈ':
+                    return 'ii';
+                case 'ఉ':
+                    return 'u';
+                case 'ఊ':
+                    return 'uu';
+                case 'ఎ':
+                    return 'e';
+                case 'ఒ':
+                    return 'o';
+                case 'ఔ':
+                    return 'ఔ';
+                default:
+                    return '';
+            }
+        }
+    </script>
+</body>
+</html>
